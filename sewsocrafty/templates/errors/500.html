@@ -1,0 +1,27 @@
+.fa-lock:before {
+    content: "\f023";
+}{% extends "layout.html" %}
+{% block title %}
+    <title>404 Error</title>
+{% endblock title %}
+{% block content %}
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-6 is-offset-1 landing-caption">
+
+              <h3 class="title is-3 is-spaced">
+                500 Error
+              </h3>
+              <div class="divider"></div>
+              <h1 class="title is-1 is-bold is-spaced">
+                Oops. Something went wrong.
+              </h1>
+              <h3 class="subtitle is-5 is-muted">We're experiencing trouble on our end... Please try again later.</h3>
+              <span class="icon"><i class="fa5x fa-frown-o"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> <!-- closes out section tag from layout -->
+{% endblock content %}

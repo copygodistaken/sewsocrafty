@@ -1,0 +1,15 @@
+.filter-accent{
+    filter: invert(71%) sepia(98%) saturate(1323%) hue-rotate(109deg) brightness(95%) contrast(101%);
+}
+
+.filter-secondary{
+    filter: invert(67%) sepia(84%) saturate(4467%) hue-rotate(13deg) brightness(107%) contrast(106%);
+}
+
+.filter-primary{
+    filter: invert(77%) sepia(20%) saturate(3689%) hue-rotate(164deg) brightness(98%) contrast(87%);
+}
+
+.filter-tertiary{
+    filter: invert(100%) sepia(0%) saturate(4007%) hue-rotate(115deg) brightness(106%) contrast(98%);
+}

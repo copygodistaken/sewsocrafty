@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Sew.SimpsonStuff.us</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/illustrations/icons/needle.svg') }}" />
+
+  <!--Core CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/core.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sewsocrafty.css') }}">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+  <!--Libraries-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/icons.css') }}">
+
+</head>
+<body>
+  <div id="preloader">
+    <div id="status"></div>
+  </div>
+  <section class="hero is-fullheight is-default is-bold">
+  <!-- navbar permanently attached to the top -->
+    <nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="{{ url_for('static', filename='images/illustrations/icons/needle.svg') }}" alt="" width="75" height="40">
+          </a>
+
+          <!-- Burger image to open left sidebar -->
+          <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+            <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+              <svg width="1000px" height="1000px">
+                <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                <path class="path2" d="M 300 500 L 700 500"></path>
+                <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+              </svg>
+              <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+            </div>
+          </a>
+          <!-- Burger image to open left sidebar -->
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+
+        </div>
+
+        <div id="navbar-menu" class="navbar-menu is-static">
+          <!-- Burger image to open left sidebarm -->
+          <div class="navbar-start">
+            <a class="navbar-item is-hidden-mobile">
+              <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+                <svg width="1000px" height="1000px">
+                  <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                  <path class="path2" d="M 300 500 L 700 500"></path>
+                  <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+                </svg>
+                <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+              </div>
+            </a>
+          </div>
+
+          <div class="navbar-end">
+            <a href="#features" class="navbar-item is-secondary">
+                Visible at Top
+            </a>
+            <a href="#cta" class="navbar-item is-secondary">
+                CTA
+            </a>
+            <a href="#contact" class="navbar-item is-secondary">
+                Contact
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Dropdown
+              </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  Dropdown item
+                </a>
+                <a class="navbar-item">
+                  Dropdown item
+                </a>
+                <a class="navbar-item">
+                  Dropdown item
+                </a>
+              </div>
+            </div>
+            <a href="#" class="navbar-item is-secondary modal-trigger" data-modal="auth-modal">
+              Sign In
+            </a>
+            <a target="_blank" href="https://appseed.us/apps/bulma-css/bulmaplay" class="navbar-item">
+              <span class="button signup-button rounded primary-btn raised">
+                Read More
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- floating navbar once the screen is scrolled down aawy from the top navbar -->
+    <nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://cssninja.io">
+            <img src="{{ url_for('static', filename='images/illustrations/icons/needle.svg') }}" alt="" width="75" height="40">
+          </a>
+
+          <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+            <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+              <svg width="1000px" height="1000px">
+                <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                <path class="path2" d="M 300 500 L 700 500"></path>
+                <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+              </svg>
+              <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+            </div>
+          </a>
+
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+
+          <div class="navbar-start">
+            <a class="navbar-item is-hidden-mobile">
+              <div id="cloned-menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+                <svg width="1000px" height="1000px">
+                  <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                  <path class="path2" d="M 300 500 L 700 500"></path>
+                  <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+                </svg>
+                <button id="cloned-menu-icon-trigger" class="menu-icon-trigger"></button>
+              </div>
+            </a>
+          </div>
+
+          <div class="navbar-end">
+            <a href="#features" class="navbar-item is-secondary">
+              Visible as Float
+            </a>
+            <a href="#cta" class="navbar-item is-secondary">
+              CTA
+            </a>
+            <a href="#contact" class="navbar-item is-secondary">
+              Contact
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Dropdown
+              </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  Dropdown item
+                </a>
+                <a class="navbar-item">
+                  Dropdown item
+                </a>
+                <a class="navbar-item">
+                  Dropdown item
+                </a>
+              </div>
+            </div>
+            <a href="#" class="navbar-item is-secondary modal-trigger" data-modal="auth-modal">
+              Sign in
+            </a>
+            <a target="_blank" href="https://appseed.us/apps/bulma-css/bulmaplay" class="navbar-item">
+              <span class="button signup-button rounded primary-btn raised">
+                  Read More
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column is-6 is-offset-1 landing-caption">
+
+            <span>
+              A beautiful <a href="https://bulma.io/">Bulma CSS</a> App
+            </span>
+            <h1 class="title is-1 is-bold is-spaced">
+              Sew.SimpsonStuff.us
+            </h1>
+            <p class="subtitle is-muted">
+              Reach out for <a target="_blank" href=#>Custom Work</a> from us.
+            </p>
+            <p>
+              <a target="_blank" href=# class="button cta rounded primary-btn raised">
+                Mask Attack
+              </a>
+            </p>
+          </div>
+          <div class="column is-4 is-offset-1">
+            <figure class="image is-4by4">
+              <img  class="lazy"
+                    src="{{ url_for('static', filename='images/illustrations/icons/tape_measure.svg') }}"
+                    data-src="{{ url_for('static', filename='images/illustrations/icons/tape_measure.svg') }}"
+                    alt="Absurd image, Man with a bulb head.">
+            </figure>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-foot mb-20">
+      <div class="container">
+        <div class="tabs is-centered">
+          <ul>
+            <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 1."
+                                 src="{{ url_for('static', filename='images/illustrations/icons/scissors.svg') }}"
+                                 class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/scissors.svg') }}"></a></li>
+            <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 2."
+                                 src="{{ url_for('static', filename='images/illustrations/icons/button.svg') }}"
+                                 class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/button.svg') }}"></a></li>
+            <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 3."
+                                 src="{{ url_for('static', filename='images/illustrations/icons/mask.svg') }}"
+                                 class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/mask.svg') }}"></a></li>
+            <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 4."
+                                 src="{{ url_for('static', filename='images/illustrations/icons/thread.svg') }}"
+                                 class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/thread.svg') }}"></a></li>
+            <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 5."
+                                 src="{{ url_for('static', filename='images/illustrations/icons/machine.svg') }}"
+                                 class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/machine.svg') }}"></a></li>
+          </ul>
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- " Product Display" section -->
+  <section id="features" class="section section-feature-grey is-medium">
+    <div class="container">
+      <div class="title-wrapper has-text-centered">
+        <h2 class="title is-2">Product Display</h2>
+        <h3 class="subtitle is-5 is-muted">Some of our recent products.</h3>
+        <div class="divider is-centered"></div>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="columns">
+          <div class="column is-one-third">
+            <div class="feature-card is-bordered has-text-centered revealOnScroll delay-1" data-animation="fadeInLeft">
+              <div class="card-title">
+                <h4>Masks</h4>
+              </div>
+              <div class="card-icon">
+                <img alt="Mask icon" class="lazy filter-secondary" width="150" height="75"
+                     data-src="{{ url_for('static', filename='images/illustrations/icons/mask.svg') }}" >
+              </div>
+              <div class="card-text">
+                <p>We can make custom masks, because we're awesome.</p>
+              </div>
+              <div class="card-action">
+                <a target="_blank" href="" class="button btn-align-md secondary-btn raised">See Masks</a>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="feature-card is-bordered has-text-centered revealOnScroll delay-2" data-animation="fadeInLeft">
+              <div class="card-title">
+                <h4>Wedding Mementos</h4>
+              </div>
+              <div class="card-icon">
+                <img alt="Dress icon" class="lazy"
+                     data-src="{{ url_for('static', filename='images/illustrations/icons/dress.svg') }}">
+              </div>
+              <div class="card-text">
+                <p>Turn that raggedy old wedding dress into a purse!</p>
+              </div>
+              <div class="card-action">
+                <a target="_blank" href="" class="button btn-align-md accent-btn raised">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="feature-card is-bordered has-text-centered revealOnScroll delay-3" data-animation="fadeInLeft">
+              <div class="card-title">
+                <h4>Doll Dresses</h4>
+              </div>
+              <div class="card-icon">
+                <img class="lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/plug-cloud.svg') }}">
+              </div>
+              <div class="card-text">
+                <p>These are clothes for your dolls, don't try to wear them.</p>
+              </div>
+              <div class="card-action">
+                <a target="_blank" href="https://blog.appseed.us" class="button btn-align-md primary-btn raised">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- "You're here because you want the best" section -->
+  <section class="section is-medium">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-centered-tablet-portrait">
+          <h2 class="title section-title">You're here because you want the best</h2>
+          <h3 class="subtitle is-4 is-muted">And we Know it</h3>
+          <div class="divider"></div>
+        </div>
+        <div class="column is-8 mt-60">
+
+          <!-- icon block -->
+          <article class="media icon-box">
+            <figure class="media-left">
+              <p class="image">
+                <img class="lazy"
+                     data-src="{{ url_for('static', filename='images/illustrations/icons/laptop-globe.svg') }}">
+              </p>
+            </figure>
+            <div class="media-content mt-50">
+              <div class="content">
+                <p>
+                  <span class="icon-box-title">Powerful and unified interface</span>
+                  <span class="icon-box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor.</span>
+                </p>
+              </div>
+            </div>
+          </article>
+          <!-- /icon block -->
+
+          <!-- icon block -->
+          <article class="media icon-box">
+            <figure class="media-left">
+              <p class="image">
+                <img class="lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/doc-sync.svg') }}">
+              </p>
+            </figure>
+            <div class="media-content mt-50">
+              <div class="content">
+                <p>
+                  <span class="icon-box-title">Cross device Synchronisation</span>
+                  <span class="icon-box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor.</span>
+                </p>
+              </div>
+            </div>
+          </article>
+          <!-- /icon block -->
+
+          <!-- icon block -->
+          <article class="media icon-box">
+            <figure class="media-left">
+              <p class="image">
+                <img class="lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/mobile-feed.svg') }}">
+              </p>
+            </figure>
+            <div class="media-content mt-50">
+              <div class="content">
+                <p>
+                  <span class="icon-box-title">Nomad System</span>
+                  <span class="icon-box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor.</span>
+                </p>
+              </div>
+            </div>
+          </article>
+          <!-- /icon block -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- "Coding is Fun" section -->
+  <section id="cta" class="section section-feature-grey is-medium">
+    <div class="container">
+
+      <div class="columns">
+        <div class="column is-10 is-offset-1">
+          <div class="has-text-centered">
+            <img alt="JAMStack Bulma CSS Web App - Main Image."
+                 class="pushed-image lazy"
+                 src="{{ url_for('static', filename='images/illustrations/mockups/bulma-css-app-mockup-low.png') }}"
+                 data-src="{{ url_for('static', filename='images/illustrations/mockups/bulma-css-app-mockup.png') }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="title-wrapper has-text-centered">
+        <h2 class="title is-2">Coding is fun</h2>
+        <h3 class="subtitle is-5 is-muted">Built with Bulma CSS and JAMStack</h3>
+      </div>
+
+      <p class="has-text-centered mt-20">
+        <a target="_blank" href="https://github.com/app-generator/bulmaplay" class="button cta is-large rounded secondary-btn raised">
+          Get Code
+        </a>
+      </p>
+    </div>
+  </section>
+
+<!-- "What our customer say about us" section -->
+  <section class="section is-medium section-secondary">
+    <div class="container">
+
+      <div class="title-wrapper has-text-centered">
+        <h2 class="title is-2 light-text is-spaced">What Our Customers Have to Say</h2>
+        <h3 class="subtitle is-5 light-text">Actual feedback from recent customers.</h3>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="columns is-vcentered">
+          <div class="column is-4">
+            <figure class="testimonial">
+              <blockquote>
+                Lorem ipsum dolor sit amet, elit deleniti dissentias quo eu, hinc minim appetere te usu, ea case duis scribentur has.
+              </blockquote>
+              <div class="author">
+                <img class="lazy" data-src="{{ url_for('static', filename='images/illustrations/faces/1.png') }}" alt=""/>
+                <h5>Irma Walters</h5><span>Accountant</span>
+              </div>
+            </figure>
+          </div>
+          <div class="column is-4">
+            <figure class="testimonial">
+              <blockquote>
+                Lorem ipsum dolor sit amet, elit deleniti dissentias quo eu, hinc minim appetere te usu, ea case duis scribentur has. Duo te consequat elaboraret, has quando suavitate at.
+              </blockquote>
+              <div class="author">
+                <img class="lazy" data-src="{{ url_for('static', filename='images/illustrations/faces/2.png') }}" alt=""/>
+                <h5>John Bradley</h5><span>Financial Analyst</span>
+              </div>
+            </figure>
+          </div>
+          <div class="column is-4">
+            <figure class="testimonial">
+              <blockquote>
+                Lorem ipsum dolor sit amet, elit deleniti dissentias quo eu, hinc minim appetere te usu, ea case duis scribentur has. Duo te consequat elaboraret, has quando suavitate at.
+              </blockquote>
+              <div class="author">
+                <img class="lazy" data-src="{{ url_for('static', filename='images/illustrations/faces/3.png') }}" alt=""/>
+                <h5>Gary Blackman</h5><span>HR Manager</span>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- "Have a Request?" section -->
+  <section id="contact" class="section section-light-grey is-medium">
+    <div class="container">
+      <div class="title-wrapper has-text-centered">
+        <h2 class="title is-2 is-spaced">Have A Request?</h2>
+        <h3 class="subtitle is-5 is-muted">We'd love to give you a quote on a custom piece, or just hear from you!</h3>
+        <div class="divider is-centered"></div>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="columns">
+          <div class="column is-6 is-offset-3">
+            <form>
+              <div class="columns is-multiline">
+                <div class="column is-6">
+                  <input class="input is-medium" type="text" placeholder="Enter your Name">
+                </div>
+                <div class="column is-6">
+                  <input class="input is-medium" type="email" placeholder="Enter your Email">
+                </div>
+                <div class="column is-12">
+                  <textarea class="textarea" rows="10" placeholder="Write someting ..."></textarea>
+                </div>
+                <div class="form-footer has-text-centered mt-10">
+                  <button type="button" class="button cta is-large primary-btn raised is-clear">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- UNKNOWN SECTION, FIGURE THIS OUT! -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="flex-card auth-card">
+        <div class="tabs-wrapper">
+          <div class="tabs">
+            <ul>
+              <li class="is-active" data-tab="login-tab"><a>Login</a></li>
+              <li data-tab="register-tab"><a>Register</a></li>
+            </ul>
+          </div>
+          <div id="login-tab" class="tab-content is-active">
+            <div class="field">
+              <label>Username</label>
+              <div class="control">
+                <input type="text" class="input is-medium" placeholder="Enter username">
+              </div>
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <div class="control">
+                <input type="password" class="input is-medium" placeholder="Enter password">
+              </div>
+            </div>
+
+            <a class="button is-fullwidth secondary-btn is-rounded raised">Log in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+
+
+
+
+
+<!-- Footer section -->
+  <footer class="footer footer-dark">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <div class="footer-logo">
+            <img alt="SewSoCrafty Tape Measure Logo"
+                 src="{{ url_for('static', filename='images/illustrations/icons/tape_measure.svg') }}">
+          </div>
+        </div>
+        <div class="column">
+          <div class="footer-column">
+            <div class="footer-header">
+              <h3>App Info</h3>
+            </div>
+            <ul class="link-list">
+              <li><a href="https://github.com/copygodistaken/SewSoCrafty">Get Code</a></li>
+              <li><a href="https://appseed.us/apps/bulma-css">More Bulma Apps</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <div class="footer-column">
+            <div class="footer-header">
+              <h3>Docs</h3>
+            </div>
+            <ul class="link-list">
+              <li><a href="https://docs.appseed.us/apps/bulma-css/bulmaplay">Documentation</a></li>
+              <li><a href="https://blog.appseed.us/bulmaplay-jamstack-app-built-with-bulma-css">Blog Article</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <div class="footer-column">
+            <div class="footer-header">
+              <h3>Credits</h3>
+            </div>
+            <ul class="link-list">
+              <li><a href="https://blog.simpsonstuff.us">SimpsonStuff</a></li>
+              <li><a href="https://github.com/cssninjaStudio/fresh">CSS Ninja</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <div class="footer-column">
+            <div class="footer-header">
+              <h3>Follow Us</h3>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <a class="level-item" href="https://github.com/copygodistaken/SewSoCrafty">
+                    <span class="icon"><i class="fa fa-github"></i></span>
+                  </a>
+                  <a class="level-item" href="#">
+                    <span class="icon"><i class="fa fa-facebook"></i></span>
+                  </a>
+                  <a class="level-item" href="#">
+                    <span class="icon"><i class="fa fa-twitter"></i></span>
+                  </a>
+                  <a class="level-item" href="#">
+                    <span class="icon"><i class="fa fa-instagram"></i></span>
+                  </a>
+                </div>
+              </nav>
+
+              <a href="https://bulma.io" target="_blank">
+                <img src="{{ url_for('static', filename='images/logos/made-with-bulma.png') }}" alt="Made with Bulma" width="128" height="24">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <div id="backtotop">
+    <a href="#"></a>
+  </div>
+
+  <!-- popout sidebar section -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <img src="{{ url_for('static', filename='images/logos/fresh-square.svg') }}">
+      <a class="sidebar-close" href="javascript:void(0);"><i data-feather="x"></i></a>
+    </div>
+    <div class="inner">
+      <ul class="sidebar-menu">
+        <li><span class="nav-section-title"></span></li>
+        <li class="have-children"><a href="#"><span class="fa fa-info-circle"></span>About</a>
+          <ul>
+            <li><a target="_blank" href="https://github.com/copygodistaken/SewSoCrafty">Sources</a></li>
+            <li><a target="_blank" href="{{ url_for("reviews") }}">Customer Reviews</a></li>
+            <li><a target="_blank" href="https://blog.simpsonstuff.us">Blog</a></li>
+          </ul>
+        </li>
+        <li class="have-children"><a href="#"><span class="fa fa-cog"></span>Admin</a>
+          <ul>
+            <li><a target="_blank" href="https://github.com/app-generator/bulmaplay/issues/new">Log In</a></li>
+            <li><a target="_blank" href="https://discord.gg/fZC6hup">Discord</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>        <!-- jQuery first, then Bootstrap JS. -->
+  <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+
+  <!-- JS -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <!-- /JS -->    </body>
+</html>
+
