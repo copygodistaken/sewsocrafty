@@ -17,7 +17,11 @@ With the initial commit I've got most of the page rendering working, but still n
    1. Edit products
    1. Edit landing page contents
    1. Add additional admin accounts
-1. Create secure method to set up initial Admin account upon deployment
+1. Convert password to database storage (salted bcrypt hash)
+1. Add password update via email token
+1. Store/Retrieve/Edit product data from database
+1. Create secure method to set up initial Admin account upon deployment (email token from config.py MAIL_USERNAME to MAIL_USERNAME?)
+1. Store/Retrieve/Edit product data from database
 1. Search capability built in, not sure if I'll use something like ElasticSearch or add "meta" tags in the DB and search that way.
 1. Add contact capability (Text/Email) to contact pages
 
@@ -39,7 +43,8 @@ With the initial commit I've got most of the page rendering working, but still n
 * prod_price
 * prod_labor
 * prod_cost
-* date
+* date_added
+* date_updated
 * tags
 * image(s) (min1, max5)
 * user_id (key)
