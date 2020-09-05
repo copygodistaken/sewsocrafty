@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+######## My stuff to ignore #########
+.DS_Store
+todo_before_commit

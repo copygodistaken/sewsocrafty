@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <!--Core CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/core.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sewsocrafty.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
@@ -24,6 +24,8 @@
     </div>
     <section class="hero is-fullheight is-default is-bold">
       <!-- navbar permanently attached to the top -->
+      {# is-admin and is-fresh will cycle between whether the user (logged in) sees #}
+      {# an admin page or the normal page.  Links will have to be adjusted, too. #}
       <nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
         <div class="container">
           <div class="navbar-brand">
@@ -66,8 +68,9 @@
               </a>
             </div>
 
+            {# set to be overridden with links for the admin page #}
             {% block navbar %}
-            <div class="navbar-end">
+            <div class="navbar-end is-secondary">
               <a href="{{ url_for('main.about') }}" class="navbar-item is-secondary">
                 About SewSoCrafty
               </a>
@@ -81,18 +84,18 @@
                 Contact Us
               </a>
               <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link" href="{{ url_for('products.all_products') }}">
+                <a class="navbar-item is-secondary" href="{{ url_for('products.all_products') }}">
                   Products
                 </a>
 
                 <div class="navbar-dropdown">
-                  <a href="{{ url_for('products.product_name', prod='masks') }}" class="navbar-item">
+                  <a href="{{ url_for('products.product_name', prod='masks') }}" class="navbar-item is-secondary">
                     Masks
                   </a>
-                  <a href="{{ url_for('products.product_name', prod='mementos') }}" class="navbar-item">
+                  <a href="{{ url_for('products.product_name', prod='mementos') }}" class="navbar-item is-secondary">
                     Wedding Mementos
                   </a>
-                  <a href="{{ url_for('products.product_name', prod='dolldress') }}" class="navbar-item">
+                  <a href="{{ url_for('products.product_name', prod='dolldress') }}" class="navbar-item is-secondary">
                     Doll Dresses
                   </a>
                 </div>
@@ -104,6 +107,8 @@
       </nav>
 
       <!-- floating navbar once the screen is scrolled down away from the top navbar -->
+      {# is-admin and is-fresh will cycle between whether the user (logged in) sees #}
+      {# an admin page or the normal page.  Links will have to be adjusted, too. #}
       <nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
         <div class="container">
           <div class="navbar-brand">
@@ -145,7 +150,7 @@
             </div>
 
             {% block navbar_float %}
-            <div class="navbar-end">
+            <div class="navbar-end is-secondary">
               <a href="{{ url_for('main.about') }}" class="navbar-item is-secondary">
                 About SewSoCrafty
               </a>
@@ -159,18 +164,18 @@
                 Contact Us
               </a>
               <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link" href="{{ url_for('products.all_products') }}">
+                <a class="navbar-item is-secondary" href="{{ url_for('products.all_products') }}">
                   Products
                 </a>
 
                 <div class="navbar-dropdown">
-                  <a href="{{ url_for('products.product_name', prod='masks') }}" class="navbar-item">
+                  <a href="{{ url_for('products.product_name', prod='masks') }}" class="navbar-item is-secondary">
                     Masks
                   </a>
-                  <a href="{{ url_for('products.product_name', prod='mementos') }}" class="navbar-item">
+                  <a href="{{ url_for('products.product_name', prod='mementos') }}" class="navbar-item is-secondary">
                     Wedding Mementos
                   </a>
-                  <a href="{{ url_for('products.product_name', prod='dolldress') }}" class="navbar-item">
+                  <a href="{{ url_for('products.product_name', prod='dolldress') }}" class="navbar-item is-secondary">
                     Doll Dresses
                   </a>
                 </div>
