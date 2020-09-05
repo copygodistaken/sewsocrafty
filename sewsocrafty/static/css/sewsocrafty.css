@@ -13,3 +13,109 @@
 .filter-tertiary{
     filter: invert(100%) sepia(0%) saturate(4007%) hue-rotate(115deg) brightness(106%) contrast(98%);
 }
+
+.navbar.is-admin {
+  position: relative;
+  min-height: 3.8rem;
+  transition: all .3s;
+  z-index: 29;
+}
+
+.navbar.is-admin .container {
+  min-height: 4rem;
+}
+
+.navbar.is-admin.no-shadow {
+  box-shadow: none !important;
+}
+
+.navbar.is-admin .navbar-burger {
+  width: 4rem;
+  height: 4rem;
+}
+
+.navbar.is-admin .navbar-brand {
+  min-height: 4rem;
+}
+
+.navbar.is-admin .navbar-brand img {
+  max-height: 36px !important;
+  height: 36px;
+}
+
+.navbar.is-admin .navbar-brand:hover .navbar-item {
+  background: red !important;
+}
+
+.navbar.is-admin .navbar-end {
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.navbar.is-admin .navbar-item {
+  color: #999;
+}
+
+.navbar.is-admin .navbar-item.is-secondary:hover {
+  color: white !important;
+  background: red !important;
+}
+
+.navbar.is-admin .navbar-item.has-dropdown {
+  padding: 10px 0;
+}
+
+.navbar.is-admin .navbar-item.has-dropdown .navbar-link {
+  color: #999;
+}
+
+.navbar.is-admin .navbar-item.has-dropdown .navbar-link:after {
+  top: 55%;
+  height: 0.5em;
+  width: 0.5em;
+  border-width: 2px;
+  border-color: #999;
+}
+
+.navbar.is-admin .navbar-item.has-dropdown .navbar-dropdown {
+  top: 3.4rem;
+  min-width: 220px;
+  margin-top: 4px;
+  border-top-color: red;
+}
+
+.navbar.is-admin .navbar-item.has-dropdown .navbar-dropdown .navbar-item {
+  padding: 10px 20px;
+}
+
+.navbar.is-admin .navbar-item.has-dropdown:hover .navbar-link {
+  color: #F39200;
+}
+
+.navbar.is-admin .navbar-item.has-dropdown:hover .navbar-link:after {
+  border-color: #F39200;
+}
+
+.navbar.is-admin .navbar-item .signup {
+  display: block;
+  line-height: 0;
+  font-size: .9rem !important;
+}
+
+.navbar.is-admin.is-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 4rem !important;
+  background: #fff;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.navbar.is-admin.is-fixed a {
+  color: #444F60;
+}
+
+.navbar.is-admin.is-fixed a:hover {
+  color: #4FC1EA;
+}
