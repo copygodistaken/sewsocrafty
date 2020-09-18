@@ -1,0 +1,71 @@
+    <section id="products" class="{{ css_class }}">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="title-wrapper has-text-centered">
+              <h2 class="title is-1">{{ prod }}</h2>
+              <p class="subtitle is-muted">Some of Our Recent {{ prod }}.</p>
+            <div class="divider is-centered"></div>
+            </div>
+          </div>
+          <div class="content-wrapper">
+            <div class="columns">
+              <div class="column is-one-third">
+                <div class="feature-card is-bordered has-text-centered">
+                  <div class="card-title">
+                    <h4>Masks</h4>
+                  </div>
+                  <div class="card-icon">
+                    <img alt="Mask icon" class="lazy filter-secondary" width="150" height="75"
+                         data-src="{{ url_for('static', filename='images/illustrations/icons/mask.svg') }}" >
+                  </div>
+                  <div class="card-text">
+                    <p>We can make custom masks, because we're awesome.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="{{ url_for('products.product_name', prod='Masks') }}"
+                      class="button btn-align-md secondary-btn raised">See Masks</a>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="feature-card is-bordered has-text-centered">
+                  <div class="card-title">
+                    <h4>Wedding Mementos</h4>
+                  </div>
+                  <div class="card-icon">
+                    <img alt="Dress icon" class="lazy"
+                         data-src="{{ url_for('static', filename='images/illustrations/icons/dress.svg') }}">
+                  </div>
+                  <div class="card-text">
+                    <p>Turn that raggedy old wedding dress into a purse!</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="{{ url_for('products.product_name', prod='Mementos') }}"
+                      class="button btn-align-md accent-btn raised">See A Few!</a>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="feature-card is-bordered has-text-centered">
+                  <div class="card-title">
+                    <h4>Doll Dresses</h4>
+                  </div>
+                  <div class="card-icon">
+                    <img alt="Doll Dress" class="lazy filter-primary"
+                         data-src="{{ url_for('static', filename='images/illustrations/icons/dolldress.svg') }}">
+                  </div>
+                  <div class="card-text">
+                    <p>These are clothes for your dolls, don't try to wear them.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="{{ url_for('products.product_name', prod='Dolldress') }}"
+                      class="button btn-align-md primary-btn raised">Show Me!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

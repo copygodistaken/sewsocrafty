@@ -274,3 +274,31 @@
     content: "\f023";
 }
 
+.fa-phone:before {
+    content: "\f095";
+}
+
+.fa-key:before, .fa-pass:before, .fa-password:before {
+    content: "\f084";
+}
+
+.fa-user:before {
+    content: "\f007";
+}
+
+.fa-upload:before {
+    content: "\f151";
+}
+
+.fa-file-picture-o:before {
+    content: "\f03e";
+}
+
+/* check these for correct codes... based on 4.7 */
+.fa-envelope:before {
+    content: "\f0e0";
+}
+
+
+
+

@@ -232,7 +232,6 @@ dt,
 dd,
 blockquote,
 figure,
-fieldset,
 legend,
 textarea,
 pre,
@@ -247,6 +246,12 @@ h6 {
   margin: 0;
   padding: 0;
 }
+
+fieldset {
+  margin: 0;
+  padding: 20;
+}
+
 
 h1,
 h2,
@@ -3457,6 +3462,7 @@ a.box:active {
 .file.is-info .file-cta {
   background-color: #209cee;
   border-color: transparent;
+  margin-bottom: 12px;
   color: #fff;
 }
 

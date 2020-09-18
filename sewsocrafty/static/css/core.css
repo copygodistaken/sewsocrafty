@@ -920,7 +920,7 @@ Sidebar Styles
 }
 
 .sidebar {
-  background: #344258;
+  background: #123456;
   width: 280px;
   height: 100%;
   position: fixed;
@@ -956,6 +956,7 @@ Sidebar Styles
 .sidebar .sidebar-header a {
   width: 24px;
   height: 24px;
+  color: #F39200;
 }
 
 .sidebar .sidebar-header svg {
@@ -1009,14 +1010,14 @@ Sidebar Styles
 }
 
 .sidebar .inner .sidebar-menu li.have-children li a {
-  background-color: #2b3648;
+  background-color: #123456;
   padding-left: 62px;
   border-bottom: 1px solid #303d52;
   font-size: .8rem;
 }
 
 .sidebar .inner .sidebar-menu li.have-children li a:hover {
-  color: #4FC1EA;
+  color: #F39200;
   padding-left: 62px;
 }
 

@@ -1,37 +1,46 @@
 {% extends "layout.html" %}
-
-{% block title %}
-    {% if title %}
-    <title>SewSoCrafty - {{ title }}</title>
-    {% endif %}
-{% endblock title %}
-
+{% block title %}<title>{{ title }}</title>{% endblock title %}
 {% block content %}
       <div class="hero-body">
         <div class="container">
           <div class="columns is-vcentered">
-            <div class="column is-6 is-offset-1 landing-caption">
-              <span>
-                A beautiful <a href="https://bulma.io/">Bulma CSS</a> App
-              </span>
+            <div class="column is-7 landing-caption">
               <h1 class="title is-1 is-bold is-spaced">
-                SewSoCrafty.com
+                SewSoCrafty Admin
               </h1>
-              <p class="subtitle is-muted">
-                Reach out for <a href=#contact>Custom Work</a> from us.
-              </p>
-              <p>
-                <a href=#contact class="button cta rounded primary-btn raised">
-                  Custom Request
-                </a>
-              </p>
+              <div class="divider"></div>
+              <div class="is-muted">
+                <form method="POST" action="">
+                  {{ form.hidden_tag() }}
+                  <fieldset>
+                    <legend class="is-secondary">{{ title }}</legend>
+                    <div class="field" padding=20px>
+                      {{ form.username.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.username(class="input is-medium is-secondary-focus", placeholder="Username") }}
+                        <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      {{ form.password.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.password(class="input is-medium is-secondary-focus", placeholder="Password") }}
+                        <span class="icon is-medium is-left"><i class="fa fa-rotate-90 fa-key"></i></span>
+                      </div>
+                    </div>
+                  <div class="control">
+                    {{ form.submit(href=url_for('admin.login')) }}
+                  </div>
+                  </fieldset>
+                </form>
+              </div>
             </div>
             <div class="column is-4 is-offset-1">
               <figure class="image is-4by4">
-                <img  class="lazy"
-                      src="{{ url_for('static', filename='images/illustrations/icons/tape_measure.svg') }}"
-                      data-src="{{ url_for('static', filename='images/illustrations/icons/tape_measure.svg') }}"
-                      alt="Tape Measure Drawing">
+                <img  class="lazy filter-primary"
+                      src="{{ url_for('static', filename='images/illustrations/icons/crochethooks.svg') }}"
+                      data-src="{{ url_for('static', filename='images/illustrations/icons/crochethooks.svg') }}"
+                      alt="Crochet Hooks">
               </figure>
             </div>
           </div>
@@ -60,9 +69,5 @@
           </div>
         </div>
       </div>
+    </section> <!-- closes out section tag from layout -->
 {% endblock content %}
-{% block landing %}
-  {% include 'includes/products.html' %}
-  {% include 'includes/reviews.html' %}
-  {% include 'includes/contact.html' %}
-{% endblock landing %}

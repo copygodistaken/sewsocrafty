@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags always come first -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!--Core CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/core.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sewsocrafty.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-    <!--Libraries-->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/icons.css') }}">
-    {% block title %}
-    <title>SewSoCrafty</title>
-    {% endblock title %}
-    <link rel="icon" type="image/svg" href="{{ url_for('static', filename='images/illustrations/icons/needle.svg') }}" />
+    {% include 'includes/header.html' %}
   </head>
 
   <body>
@@ -23,362 +9,42 @@
       <div id="status"></div>
     </div>
     <section class="hero is-fullheight is-default is-bold">
-      <!-- navbar permanently attached to the top -->
-      {# is-admin and is-fresh will cycle between whether the user (logged in) sees #}
-      {# an admin page or the normal page.  Links will have to be adjusted, too. #}
-      <nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
-        <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="{{ url_for('main.home') }}">
-              <img src="{{ url_for('static', filename='images/illustrations/icons/needle.svg') }}" alt="" width="75" height="40">
-            </a>
+      {% include 'includes/navbar.html' %}
+      {% include 'includes/floatbar.html' %}
 
-            <!-- Burger icon to open left sidebar -->
-            <a class="navbar-item is-hidden-desktop is-hidden-tablet">
-              <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
-                <svg width="1000px" height="1000px">
-                  <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
-                  <path class="path2" d="M 300 500 L 700 500"></path>
-                  <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
-                </svg>
-                <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
-              </div>
-            </a>
-            <!-- Burger image to open left sidebar -->
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-
-          </div>
-
-          <div id="navbar-menu" class="navbar-menu is-static">
-            <!-- Burger image to open left sidebar -->
-            <div class="navbar-start">
-              <a class="navbar-item is-hidden-mobile">
-                <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
-                  <svg width="1000px" height="1000px">
-                    <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
-                    <path class="path2" d="M 300 500 L 700 500"></path>
-                    <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
-                  </svg>
-                  <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
-                </div>
-              </a>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
             </div>
-
-            {# set to be overridden with links for the admin page #}
-            {% block navbar %}
-            <div class="navbar-end is-secondary">
-              <a href="{{ url_for('main.about') }}" class="navbar-item is-secondary">
-                About SewSoCrafty
-              </a>
-              <a href="{{ url_for('products.all_products') }}" class="navbar-item is-secondary">
-                Product Samples
-              </a>
-              <a href="{{ url_for('main.reviews') }}" class="navbar-item is-secondary">
-                Reviews
-              </a>
-              <a href="#" class="navbar-item is-secondary modal-trigger" data-modal="contact-modal">
-                Contact Us
-              </a>
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-item is-secondary" href="{{ url_for('products.all_products') }}">
-                  Products
-                </a>
-
-                <div class="navbar-dropdown">
-                  <a href="{{ url_for('products.product_name', prod='masks') }}" class="navbar-item is-secondary">
-                    Masks
-                  </a>
-                  <a href="{{ url_for('products.product_name', prod='mementos') }}" class="navbar-item is-secondary">
-                    Wedding Mementos
-                  </a>
-                  <a href="{{ url_for('products.product_name', prod='dolldress') }}" class="navbar-item is-secondary">
-                    Doll Dresses
-                  </a>
-                </div>
-              </div>
-            </div>
-            {% endblock navbar %}
-          </div>
-        </div>
-      </nav>
-
-      <!-- floating navbar once the screen is scrolled down away from the top navbar -->
-      {# is-admin and is-fresh will cycle between whether the user (logged in) sees #}
-      {# an admin page or the normal page.  Links will have to be adjusted, too. #}
-      <nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
-        <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="{{ url_for('main.home') }}">
-              <img src="{{ url_for('static', filename='images/illustrations/icons/needle.svg') }}" alt="" width="75" height="40">
-            </a>
-
-            <a class="navbar-item is-hidden-desktop is-hidden-tablet">
-              <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
-                <svg width="1000px" height="1000px">
-                  <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
-                  <path class="path2" d="M 300 500 L 700 500"></path>
-                  <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
-                </svg>
-                <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
-              </div>
-            </a>
-
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-
-          <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
-
-            <div class="navbar-start">
-              <a class="navbar-item is-hidden-mobile">
-                <div id="cloned-menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
-                  <svg width="1000px" height="1000px">
-                    <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
-                    <path class="path2" d="M 300 500 L 700 500"></path>
-                    <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
-                  </svg>
-                  <button id="cloned-menu-icon-trigger" class="menu-icon-trigger"></button>
-                </div>
-              </a>
-            </div>
-
-            {% block navbar_float %}
-            <div class="navbar-end is-secondary">
-              <a href="{{ url_for('main.about') }}" class="navbar-item is-secondary">
-                About SewSoCrafty
-              </a>
-              <a href="{{ url_for('products.all_products') }}" class="navbar-item is-secondary">
-                Product Samples
-              </a>
-              <a href="{{ url_for('main.reviews') }}" class="navbar-item is-secondary">
-                Reviews
-              </a>
-              <a href="#" class="navbar-item is-secondary modal-trigger" data-modal="contact-modal">
-                Contact Us
-              </a>
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-item is-secondary" href="{{ url_for('products.all_products') }}">
-                  Products
-                </a>
-
-                <div class="navbar-dropdown">
-                  <a href="{{ url_for('products.product_name', prod='masks') }}" class="navbar-item is-secondary">
-                    Masks
-                  </a>
-                  <a href="{{ url_for('products.product_name', prod='mementos') }}" class="navbar-item is-secondary">
-                    Wedding Mementos
-                  </a>
-                  <a href="{{ url_for('products.product_name', prod='dolldress') }}" class="navbar-item is-secondary">
-                    Doll Dresses
-                  </a>
-                </div>
-              </div>
-            </div>
-            {% endblock navbar_float %}
-          </div>
-        </div>
-      </nav>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
 
       {% block content %}
       {% endblock content %}
-
-  <!-- Popup Login window -->
-    <div id="auth-modal" class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-content">
-        <div class="flex-card auth-card">
-          <div class="tabs-wrapper">
-            <div class="tabs">
-              <ul>
-                <li class="is-active" data-tab="login-tab"><a>Login</a></li>
-              </ul>
-            </div>
-            <div id="login-tab" class="tab-content is-active">
-              <div class="field">
-                <label>Username</label>
-                <div class="control">
-                  <input type="text" class="input is-medium" placeholder="Enter Username">
-                </div>
-              </div>
-              <div class="field">
-                <label>Password</label>
-                <div class="control">
-                  <input type="password" class="input is-medium" placeholder="Enter Password">
-                </div>
-              </div>
-              <a class="button is-fullwidth secondary-btn is-rounded raised">Log in</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="modal-close is-large" aria-label="close"></button>
-    </div>
-
-    <!-- popup contact window -->
-    <div id="contact-modal" class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-content">
-        <div class="flex-card auth-card">
-          <div class="tabs-wrapper">
-            <div class="tabs">
-              <ul>
-                <li class="is-active" data-tab="contact-tab"><a>Contact</a></li>
-              </ul>
-            </div>
-            <div id="contact-tab" class="tab-content is-active">
-              <div class="field">
-                <label for="name">Name</label>
-                <div class="control">
-                  <input id="name" type="text" class="input is-secondary-focus" placeholder="Your Name">
-                </div>
-              </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <div class="control">
-                  <input id="email" type="text" class="input is-secondary-focus" placeholder="Email">
-                </div>
-              </div>
-              <div class="field">
-                <label for="phone">Phone</label>
-                <div class="control">
-                  <input id="phone" type="text" class="input is-secondary-focus" placeholder="Phone Number">
-                </div>
-              </div>
-              <div class="field">
-                <label for="message">Message</label>
-                <div class="control">
-                  <textarea id="message" rows="4" class="textarea is-secondary-focus" placeholder="Type your message here!"></textarea>
-                  <!-- <textarea class="input" placeholder="Type your message here!"> -->
-                </div>
-              </div>
-              <a class="button is-fullwidth secondary-btn is-rounded raised">Send</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="modal-close is-large" aria-label="close"></button>
-    </div>
-
-  <!-- Footer section -->
-    <footer class="footer footer-dark">
-      <div class="container">
-        <div class="columns">
-          <div class="column">
-            <div class="footer-logo">
-              <img alt="SewSoCrafty Tape Measure Logo" class="lazy filter-tertiary"
-                   src="{{ url_for('static', filename='images/illustrations/icons/tape_measure.svg') }}">
-            </div>
-          </div>
-          <div class="column">
-            <div class="footer-column">
-              <div class="footer-header">
-                <h3>App Info</h3>
-              </div>
-              <ul class="link-list">
-                <li><a href="https://github.com/copygodistaken/SewSoCrafty">Get Code</a></li>
-                <li><a href="https://appseed.us/apps/bulma-css">More Bulma Apps</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="column">
-            <div class="footer-column">
-              <div class="footer-header">
-                <h3>Docs</h3>
-              </div>
-              <ul class="link-list">
-                <li><a href="https://docs.appseed.us/apps/bulma-css/bulmaplay">Documentation</a></li>
-                <li><a href="https://blog.appseed.us/bulmaplay-jamstack-app-built-with-bulma-css">Blog Article</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="column">
-            <div class="footer-column">
-              <div class="footer-header">
-                <h3>Credits</h3>
-              </div>
-              <ul class="link-list">
-                <li><a href="https://blog.simpsonstuff.us">SimpsonStuff</a></li>
-                <li><a href="https://github.com/cssninjaStudio/fresh">CSS Ninja</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="column">
-            <div class="footer-column">
-              <div class="footer-header">
-                <h3>Follow Us</h3>
-                <nav class="level is-mobile">
-                  <div class="level-left">
-                    <a class="level-item" href="https://github.com/copygodistaken/SewSoCrafty">
-                      <span class="icon"><i class="fa fa-github"></i></span>
-                    </a>
-                    <a class="level-item" href="#">
-                      <span class="icon"><i class="fa fa-facebook"></i></span>
-                    </a>
-                    <a class="level-item" href="#">
-                      <span class="icon"><i class="fa fa-twitter"></i></span>
-                    </a>
-                    <a class="level-item" href="#">
-                      <span class="icon"><i class="fa fa-instagram"></i></span>
-                    </a>
-                  </div>
-                </nav>
-
-                <a href="https://bulma.io" target="_blank">
-                  <img src="{{ url_for('static', filename='images/logos/made-with-bulma.png') }}" alt="Made with Bulma" width="128" height="24">
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    </section> {# closes section for all templates #}
+    {% block landing %}
+    {% endblock landing %}
+    {% include 'includes/popup_login.html' %}
+    {% include 'includes/popup_contact.html' %}
+    {% include 'includes/footer.html' %}
 
     <!-- Back To Top Button -->
     <div id="backtotop">
       <a href="#"></a>
     </div>
 
-    <!-- popout sidebar section -->
-    <div class="sidebar">
-      <div class="sidebar-header">
-        <img src="{{ url_for('static', filename='images/logos/fresh-square.svg') }}">
-        <a class="sidebar-close" href="javascript:void(0);"><i data-feather="x"></i></a>
-      </div>
-      <div class="inner">
-        <ul class="sidebar-menu">
-          <li><span class="nav-section-title"></span></li>
-          <li class="have-children"><a href="#"><span class="fa fa-info-circle"></span>About</a>
-            <ul>
-              <li><a target="_blank" href="https://github.com/copygodistaken/SewSoCrafty">Sources</a></li>
-              <!-- <li><a target="_blank" href="{# url_for('reviews') #}">Customer Reviews</a></li> -->
-              <li><a target="_blank" href="https://blog.simpsonstuff.us">Blog</a></li>
-            </ul>
-          </li>
-          <li class="have-children"><a href="#"><span class="fa fa-cog"></span>Admin</a>
-            <ul>
-              <li>
-                <a href="#" class="navbar-item is-secondary modal-trigger" data-modal="auth-modal">
-                  Log In
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>        <!-- jQuery first, then Bootstrap JS. -->
+    {# if user is logged in as admin #}
+      {% include 'includes/sidebar.html' %}
+    {# endif #}
+    <!-- jQuery first, then Bootstrap JS. -->
     <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
-
     <!-- JS -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-    <!-- /JS -->    </body>
+    <!-- /JS -->
+  </body>
 </html>
 

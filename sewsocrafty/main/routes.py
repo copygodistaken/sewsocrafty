@@ -10,7 +10,8 @@ def home():
     # title = "Welcome to SewSoCrafty!"
     # just show the home.html data... we'll need to update this to add products
     # once that process is created.
-    return render_template('home.html')
+    css_class = 'section section-light-grey is-medium'
+    return render_template('home.html', prod='Products', css_class=css_class)
 
 @main.route("/about")
 def about():
@@ -23,8 +24,4 @@ def about():
 def reviews():
     pass
 
-# add this to admin/routes.py
-@main.route("/admin/login")
-def login():
-    pass
 

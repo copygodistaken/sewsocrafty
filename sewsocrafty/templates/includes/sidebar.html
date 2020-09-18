@@ -1,0 +1,29 @@
+    <!-- popout sidebar section -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <img src="{{ url_for('static', filename='images/logos/fresh-square.svg') }}">
+        <a class="sidebar-close" href="javascript:void(0);">X</a>
+      </div>
+      <div class="inner">
+        <ul class="sidebar-menu">
+          <li><span class="nav-section-title"></span></li>
+          <li class="have-children"><a href="#"><span class="fa fa-info-circle"></span>Products</a>
+            <ul>
+              <li><a href="{# url_for('admin/add_product') #}">Add</a></li>
+              <li><a target="_blank" href="{# url_for('admin/edit_product') #}">Edit</a></li>
+              <li><a target="_blank" href="{# url_for('admin/delete_product') #}">Delete</a></li>
+            </ul>
+          </li>
+          <li class="have-children"><a href="#"><span class="fa fa-cog"></span>Admin</a>
+            <ul>
+              <li>
+                <a href="{# url_for('admin/add_user') #}">Add an Admin</a>
+                <a href="{# url_for('admin/edit_user/username') #}">Edit current user</a>
+                {# should this be a super-admin? #}
+                <a href="{# url_for('admin/delete-user') #}">Delete an Admin</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>

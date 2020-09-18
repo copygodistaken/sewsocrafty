@@ -11,7 +11,7 @@ Contact information from the website will be able to be texted (Twilio) and/or e
 
 ## Plan
 With the initial commit I've got most of the page rendering working, but still need to work the content development and backend development.
-1. Create admin account (hard-coded user/pass for now) to:
+1. ~~Create admin account (hard-coded user/pass for now)~~ to:
    1. Add products
    1. Remove products
    1. Edit products
@@ -50,3 +50,15 @@ With the initial commit I've got most of the page rendering working, but still n
 * user_id (key)
 
 I'm sure there's plenty of roadblocks that I haven't yet anticipated, but this gives me a bit of a "digital roadmap" apart from the notes I've taken in a composition book...
+
+# v0.04 updates:
+Discovered {% include %} for templates, reduced file size of HTML products for better modularization
+Added /admin section
+1. Hardcoded test admin account (admin/password)
+2. Login/logout/register pages, admin landing page template set up
+3. More adjustments to CSS styles to kludge together Bulma into working with WTForms (I'm not an expert!)
+
+
+
+
+

@@ -1,0 +1,44 @@
+    <!-- popup contact window -->
+    <div id="contact-modal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="flex-card auth-card">
+          <div class="tabs-wrapper">
+            <div class="tabs">
+              <ul>
+                <li class="is-active" data-tab="contact-tab"><a>Contact</a></li>
+              </ul>
+            </div>
+            <div id="contact-tab" class="tab-content is-active">
+              <div class="field">
+                <label for="name">Name</label>
+                <div class="control">
+                  <input id="name" type="text" class="input is-secondary-focus" placeholder="Your Name">
+                </div>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <div class="control">
+                  <input id="email" type="text" class="input is-secondary-focus" placeholder="Email">
+                </div>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <div class="control">
+                  <input id="phone" type="text" class="input is-secondary-focus" placeholder="Phone Number">
+                </div>
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <div class="control">
+                  <textarea id="message" rows="4" class="textarea is-secondary-focus" placeholder="Type your message here!"></textarea>
+                  <!-- <textarea class="input" placeholder="Type your message here!"> -->
+                </div>
+              </div>
+              <a class="button is-fullwidth secondary-btn is-rounded raised">Send</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>

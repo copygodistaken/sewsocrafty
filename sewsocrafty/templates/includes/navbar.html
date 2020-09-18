@@ -1,0 +1,80 @@
+      <!-- navbar permanently attached to the top -->
+      {# is-admin and is-fresh will cycle between whether the user (logged in) sees #}
+      {# an admin page or the normal page.  Links will have to be adjusted, too. #}
+      <nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="{{ url_for('main.home') }}">
+              <img src="{{ url_for('static', filename='images/illustrations/icons/needle.svg') }}" alt="" width="75" height="40">
+            </a>
+            {# if admin is logged in, show the admin menu #}
+            <!-- Burger icon to open left sidebar -->
+            <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+              <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+                <svg width="1000px" height="1000px">
+                  <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                  <path class="path2" d="M 300 500 L 700 500"></path>
+                  <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+                </svg>
+                <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+              </div>
+            </a>
+            <!-- Burger image to open left sidebar -->
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <div id="navbar-menu" class="navbar-menu is-static">
+            <!-- Desktop Burger image to open left sidebar -->
+            <div class="navbar-start">
+              <a class="navbar-item is-hidden-mobile">
+                <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+                  <svg width="1000px" height="1000px">
+                    <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+                    <path class="path2" d="M 300 500 L 700 500"></path>
+                    <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+                  </svg>
+                  <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+                </div>
+              </a>
+            </div>
+            {# endif #}
+
+            {# set to be overridden with links for the admin page #}
+            {# block navbar #}
+            <div class="navbar-end is-secondary">
+              <a href="{{ url_for('main.about') }}" class="navbar-item is-secondary">
+                About SewSoCrafty
+              </a>
+              <a href="{{ url_for('products.all_products') }}" class="navbar-item is-secondary">
+                Product Samples
+              </a>
+              <a href="{{ url_for('main.reviews') }}" class="navbar-item is-secondary">
+                Reviews
+              </a>
+              <a href="#" class="navbar-item is-secondary modal-trigger" data-modal="contact-modal">
+                Contact Us
+              </a>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item is-secondary" href="{{ url_for('products.all_products') }}">
+                  Products
+                </a>
+                <div class="navbar-dropdown">
+                  <a href="{{ url_for('products.product_name', prod='Masks') }}" class="navbar-item is-secondary">
+                    Masks
+                  </a>
+                  <a href="{{ url_for('products.product_name', prod='Mementos') }}" class="navbar-item is-secondary">
+                    Wedding Mementos
+                  </a>
+                  <a href="{{ url_for('products.product_name', prod='Dolldress') }}" class="navbar-item is-secondary">
+                    Doll Dresses
+                  </a>
+                </div>
+              </div>
+            </div>
+            {# endblock navbar #}
+          </div>
+        </div>
+      </nav>

@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+{% block title %}<title>{{ title }}</title>{% endblock title %}
+{% block content %}
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-7 landing-caption">
+              <h1 class="title is-1 is-bold is-spaced">
+                New Admin
+              </h1>
+              <div class="divider"></div>
+              <div class="is-muted">
+                <!-- add enctype to allow media -->
+                <form method="POST" action="" enctype="multipart/form-data">
+                  {{ form.hidden_tag() }}
+                  <fieldset>
+                    <legend class="is-secondary">{{ title }}</legend>
+                    <div class="field" padding=20px>
+                      {{ form.username.label(class="label") }}
+                      {% if form.username.errors %}
+                        {{ form.username(class="input is-medium is-secondary-focus", placeholder="Username") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                      {% else %}
+                      <div class="control has-icons-left">
+                        {{ form.username(class="input is-medium is-secondary-focus", placeholder="Username") }}
+                        <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
+                      </div>
+                      {% endif %}
+                    </div>
+                    <div class="field">
+                      {{ form.first_name.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.first_name(class="input is-medium is-secondary-focus", placeholder="First Name") }}
+                        <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      {{ form.last_name.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.last_name(class="input is-medium is-secondary-focus", placeholder="Last Name") }}
+                        <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      {{ form.phone_num.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.phone_num(class="input is-medium is-secondary-focus", placeholder="Phone Number") }}
+                        <span class="icon is-medium is-left"><i class="fa fa-phone"></i></span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      {{ form.email.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.email(class="input is-medium is-secondary-focus", placeholder="Email Address") }}
+                        <span class="icon is-medium is-left"><i class="fa fa-envelope"></i></span>
+                      </div>
+                    </div>
+                    <div class="file is-info is-fullwidth">
+                      <label class="file-label">
+                        {# can't use this as it adds the /label tag prematurely #}
+                        {# form.picture.label(class="file-label") #}
+                        {{ form.picture(class="file-input", type="file") }}
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fa fa-file-picture-o"></i>
+                          </span>
+                          <span class="file-label">Choose a User Image
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                <!--    <div class="file has-name is-fullwidth">
+                      {{ form.picture.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.picture(class="file-input is-medium is-fullwidth", type="file") }}
+                      </div>
+                    </div> -->
+                  <div class="control">
+                    {{ form.submit(href=url_for('admin.register')) }}
+                  </div>
+                  </fieldset>
+                </form>
+              </div>
+              <span class="icon"><i class="fa5x fa-lock-o"></i></span>
+            </div>
+            <div class="column is-4 is-offset-1">
+              <figure class="image is-4by4">
+                <img  class="lazy filter-primary"
+                      src="{{ url_for('static', filename='images/illustrations/icons/crochethooks.svg') }}"
+                      data-src="{{ url_for('static', filename='images/illustrations/icons/crochethooks.svg') }}"
+                      alt="Crochet Hooks">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-foot mb-20">
+        <div class="container">
+          <div class="tabs is-centered">
+            <ul>
+              <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 1."
+                                   src="{{ url_for('static', filename='images/illustrations/icons/scissors.svg') }}"
+                                   class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/scissors.svg') }}"></a></li>
+              <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 2."
+                                   src="{{ url_for('static', filename='images/illustrations/icons/button.svg') }}"
+                                   class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/button.svg') }}"></a></li>
+              <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 3."
+                                   src="{{ url_for('static', filename='images/illustrations/icons/mask.svg') }}"
+                                   class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/mask.svg') }}"></a></li>
+              <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 4."
+                                   src="{{ url_for('static', filename='images/illustrations/icons/thread.svg') }}"
+                                   class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/thread.svg') }}"></a></li>
+              <li><a href="#"><img alt="Bulma CSS Web App, BulmaPlay - Partner 5."
+                                   src="{{ url_for('static', filename='images/illustrations/icons/machine.svg') }}"
+                                   class="partner-logo lazy" data-src="{{ url_for('static', filename='images/illustrations/icons/machine.svg') }}"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+{% endblock content %}

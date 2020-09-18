@@ -119,3 +119,12 @@
 .navbar.is-admin.is-fixed a:hover {
   color: #4FC1EA;
 }
+
+legend {
+  margin: 20;
+  padding: 20px;
+  color: #F39200;
+  border : 10px;
+}
+
+
