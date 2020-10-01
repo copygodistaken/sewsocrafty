@@ -53,7 +53,8 @@ I'm sure there's plenty of roadblocks that I haven't yet anticipated, but this g
 
 # v0.04 updates:
 Discovered {% include %} for templates, reduced file size of HTML products for better modularization
-Added /admin section
+
+Added /admin section:
 1. Hardcoded test admin account (admin/password)
 1. Login/logout/register pages, admin landing page template set up
 1. More adjustments to CSS styles to kludge together Bulma into working with WTForms (I'm not an expert!)
