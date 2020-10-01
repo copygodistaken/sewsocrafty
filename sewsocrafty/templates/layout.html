@@ -12,16 +12,7 @@
       {% include 'includes/navbar.html' %}
       {% include 'includes/floatbar.html' %}
 
-      {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
-
+      {% include 'includes/flash_messages.html' %}
       {% block content %}
       {% endblock content %}
     </section> {# closes section for all templates #}
@@ -36,9 +27,9 @@
       <a href="#"></a>
     </div>
 
-    {# if user is logged in as admin #}
-      {% include 'includes/sidebar.html' %}
-    {# endif #}
+    {% if current_user.is_authenticated: %}
+        {% include 'includes/sidebar.html' %}
+    {% endif %}
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
     <!-- JS -->

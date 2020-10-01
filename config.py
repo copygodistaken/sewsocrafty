@@ -10,6 +10,7 @@ class Config(object):
     # SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
     SECRET_KEY = "fyZD2w7XlupqbqNIWFiTSEBvgOMr3DS"
     SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     # update this stuff to enable password reset emails
     # (or any emails for that matter)
     MAIL_SERVER = 'smtp.googlemail.com'

@@ -1,6 +1,17 @@
 {% extends "layout.html" %}
 
 {% block content %}
-      <h1>Hello!</h1>
-    </section> {# closes out hero section tag from layout.html #}
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-11 landing-caption">
+              <h1 class="title is-1 is-bold is-spaced">
+                Hello, {{ user }}!
+              </h1>
+              <div class="divider"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 {% endblock content %}

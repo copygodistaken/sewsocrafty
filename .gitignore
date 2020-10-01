@@ -130,5 +130,6 @@ dmypy.json
 
 ######## My stuff to ignore #########
 .DS_Store
-todo_before_commit
+todo_before_commit.txt
 notes.txt
+site.db

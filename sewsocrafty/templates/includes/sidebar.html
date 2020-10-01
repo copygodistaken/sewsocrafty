@@ -6,22 +6,27 @@
       </div>
       <div class="inner">
         <ul class="sidebar-menu">
-          <li><span class="nav-section-title"></span></li>
-          <li class="have-children"><a href="#"><span class="fa fa-info-circle"></span>Products</a>
+          <li class="has-text-centered"><a href="#">Admin Panel</a></li>
+          <li class="have-children"><a href="#"><span class="fa fa-newspaper-o"></span>Pages</a>
             <ul>
-              <li><a href="{# url_for('admin/add_product') #}">Add</a></li>
-              <li><a target="_blank" href="{# url_for('admin/edit_product') #}">Edit</a></li>
-              <li><a target="_blank" href="{# url_for('admin/delete_product') #}">Delete</a></li>
+              <li><a href="{# url_for('admin/add_page') #}">Add a Page</a></li>
+              <li><a href="{# url_for('admin/edit_page') #}">Edit a Page</a></li>
+              <li><a href="{# url_for('admin/delete_page') #}">Delete a Page</a></li>
             </ul>
           </li>
-          <li class="have-children"><a href="#"><span class="fa fa-cog"></span>Admin</a>
+          <li class="have-children"><a href="#"><span class="fa fa-tags"></span>Products</a>
             <ul>
-              <li>
-                <a href="{# url_for('admin/add_user') #}">Add an Admin</a>
-                <a href="{# url_for('admin/edit_user/username') #}">Edit current user</a>
-                {# should this be a super-admin? #}
-                <a href="{# url_for('admin/delete-user') #}">Delete an Admin</a>
-              </li>
+              <li><a href="{# url_for('admin/add_product') #}">Add a Product</a></li>
+              <li><a href="{# url_for('admin/edit_product') #}">Edit a Product</a></li>
+              <li><a href="{# url_for('admin/delete_product') #}">Delete a Product</a></li>
+            </ul>
+          </li>
+          <li class="have-children"><a href="#"><span class="fa fa-users"></span>Admin</a>
+            <ul>
+              <li><a href="{# url_for('admin/add_user') #}">Add an Admin</a></li>
+              <li><a href="{# url_for('admin/edit_user/username') #}">Edit Current Admin</a></li>
+              {# should this be a super-admin? #}
+              <li><a href="{# url_for('admin/delete_user') #}">Delete an Admin</a></li>
             </ul>
           </li>
         </ul>

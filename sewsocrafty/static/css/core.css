@@ -302,8 +302,8 @@ img.pushed-image {
 Hero styles
 ========================================================================== */
 .hero-body {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 }
 
 .hero-body .title, .hero-body .subtitle {

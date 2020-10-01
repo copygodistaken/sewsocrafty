@@ -55,10 +55,21 @@ I'm sure there's plenty of roadblocks that I haven't yet anticipated, but this g
 Discovered {% include %} for templates, reduced file size of HTML products for better modularization
 Added /admin section
 1. Hardcoded test admin account (admin/password)
-2. Login/logout/register pages, admin landing page template set up
-3. More adjustments to CSS styles to kludge together Bulma into working with WTForms (I'm not an expert!)
+1. Login/logout/register pages, admin landing page template set up
+1. More adjustments to CSS styles to kludge together Bulma into working with WTForms (I'm not an expert!)
 
-
+# v0.05 updates:
+Fixed a few things that should have been caught in v0.04, but I needed to push what I had written to the master...
+1. Flash messages ("you didn't submit a username between two and thirty characters") weren't working.
+1. Form validation wasn't working
+1. Changed wtforms.validators.DataRequred() to InputRequired()
+1. Cleaned up registration form layout and inline error messages
+1. Added templates/includes/flash_messages.html to centralize flash message display in bulma
+1. Updated admin.html to fit site formatting
+1. Got the database working (for basic login/registration)
+1. Fixed formatting/linking issues with includes/sidebar.html
+1. Set up LoginManager for user session management
+1. Changed mymethods.py back to models.py, still learning!
 
 
 

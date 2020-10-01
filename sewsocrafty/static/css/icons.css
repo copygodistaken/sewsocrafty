@@ -299,6 +299,16 @@
     content: "\f0e0";
 }
 
+.fa-tags:before {
+    content: "\f02c";
+}
 
+.fa-users:before {
+    content: "\f0c0";
+}
+
+.fa-newspaper-o:before {
+    content: "\f1ea";
+}
 
 

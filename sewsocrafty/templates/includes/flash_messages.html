@@ -1,0 +1,14 @@
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+    <section class="hero is-{{ category }} is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">{{ category.title() }}!</h1>
+          <h2 class="subtitle">{{ message }}</h2>
+        </div>
+      </div>
+    </section>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}

@@ -15,70 +15,106 @@
                   {{ form.hidden_tag() }}
                   <fieldset>
                     <legend class="is-secondary">{{ title }}</legend>
+
                     <div class="field" padding=20px>
                       {{ form.username.label(class="label") }}
-                      {% if form.username.errors %}
-                        {{ form.username(class="input is-medium is-secondary-focus", placeholder="Username") }}
-                        <div class="invalid-feedback">
-                          {% for error in form.username.errors %}
-                            <span>{{ error }}</span>
-                          {% endfor %}
-                        </div>
-                      {% else %}
                       <div class="control has-icons-left">
                         {{ form.username(class="input is-medium is-secondary-focus", placeholder="Username") }}
                         <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
                       </div>
+                      {% if form.username.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.username.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
                       {% endif %}
                     </div>
-                    <div class="field">
+
+                    <div class="field" padding=20px>
                       {{ form.first_name.label(class="label") }}
                       <div class="control has-icons-left">
                         {{ form.first_name(class="input is-medium is-secondary-focus", placeholder="First Name") }}
                         <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
                       </div>
+                      {% if form.first_name.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.first_name.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
                     </div>
-                    <div class="field">
+
+                    <div class="field" padding=20px>
                       {{ form.last_name.label(class="label") }}
                       <div class="control has-icons-left">
                         {{ form.last_name(class="input is-medium is-secondary-focus", placeholder="Last Name") }}
                         <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
                       </div>
+                      {% if form.last_name.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.last_name.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
                     </div>
-                    <div class="field">
+
+                    <div class="field" padding=20px>
                       {{ form.phone_num.label(class="label") }}
                       <div class="control has-icons-left">
-                        {{ form.phone_num(class="input is-medium is-secondary-focus", placeholder="Phone Number") }}
+                        {{ form.phone_num(class="input is-medium is-secondary-focus", placeholder="(000) 000-0000") }}
                         <span class="icon is-medium is-left"><i class="fa fa-phone"></i></span>
                       </div>
+                      {% if form.phone_num.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.phone_num.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
                     </div>
-                    <div class="field">
+
+                    <div class="field" padding=20px>
                       {{ form.email.label(class="label") }}
                       <div class="control has-icons-left">
-                        {{ form.email(class="input is-medium is-secondary-focus", placeholder="Email Address") }}
+                        {{ form.email(class="input is-medium is-secondary-focus", placeholder="email@address.com") }}
                         <span class="icon is-medium is-left"><i class="fa fa-envelope"></i></span>
                       </div>
+                      {% if form.email.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.email.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
                     </div>
-                    <div class="file is-info is-fullwidth">
-                      <label class="file-label">
-                        {# can't use this as it adds the /label tag prematurely #}
-                        {# form.picture.label(class="file-label") #}
-                        {{ form.picture(class="file-input", type="file") }}
-                        <span class="file-cta">
-                          <span class="file-icon">
-                            <i class="fa fa-file-picture-o"></i>
+
+                    <div class="field">
+                      {{ form.image_file.label(class="label") }}
+                      <div class="file is-info is-boxed">
+                        <label class="file-label">
+                          {# can't use this as it adds the /label tag prematurely #}
+                          {# form.image_file.label(class="file-label") #}
+                          {{ form.image_file(class="file-input", type="file") }}
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fa fa-file-picture-o"></i>
+                            </span>
+                            <span class="file-label">Choose a User Image
+                            </span>
                           </span>
-                          <span class="file-label">Choose a User Image
-                          </span>
-                        </span>
-                      </label>
-                    </div>
-                <!--    <div class="file has-name is-fullwidth">
-                      {{ form.picture.label(class="label") }}
-                      <div class="control has-icons-left">
-                        {{ form.picture(class="file-input is-medium is-fullwidth", type="file") }}
+                        </label>
                       </div>
-                    </div> -->
+                      {% if form.image_file.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.image_file.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
+                    </div>
                   <div class="control">
                     {{ form.submit(href=url_for('admin.register')) }}
                   </div>
