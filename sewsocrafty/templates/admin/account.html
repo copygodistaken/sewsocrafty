@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+{# page is used if the user is not allowed to edit the admin #}
+    <section id="admin_edit" class="section is-medium section-primary">
+      <div class="container">
+        <div class="title-wrapper">
+          <h2 class="title is-2 light-text is-spaced">Administrator Information</h2>
+          <div class="divider"></div>
+          <h3 class="subtitle is-5 light-text">{{ current_user.username }} - {{ current_user.email }}</h3>
+        </div>
+        <div class="content-wrapper">
+          <div class="columns is-vcentered">
+            <div class="column is-9">
+              <figure class="admin_user">
+                <blockquote>
+                  {{ admin.first_name + " " + admin.last_name }}<br>
+                  Username: {{ admin.username }}<br>
+                  Email Address: {{ admin.email }}<br>
+                  Phone Number: {{ admin.phone_num }}<br>
+                  Image is located in the lower right.<br>
+                  Information is selected from the database, now add the following:
+                  If user is a super-user or is the user selected, allow edits to the
+                  user information by placing the information in an editable form.
+                </blockquote>
+                <div class="author">
+                  <img class="lazy" data-src="{{ url_for('static', filename='images/admins/' + admin.image_file) }}" alt=""/>
+                </div>
+              </figure>
+            </div>
+            <div class="column is-4 is-offset-1">
+              <figure class="admin_user">
+                <blockquote>
+                  <p>Select An Admin:</p><br>
+                  {% for user in admin_list %}
+                    <a href="{{ url_for('admin.account', username=user.username) }}">
+                    <input  class="button is-fullwidth rounded secondary-btn"
+                            value="{{ user.last_name + ', ' + user.first_name }}"></a>
+                    <br>
+                  {% endfor %}
+              {# add something here to list our admins with clickable links that #}
+              {# return to admin/account/username #}
+                </blockquote>
+                <div class="author">
+                  <img class="lazy filter-primary" data-src="{{ url_for('static', filename='images/admins/users.svg') }}" alt="admin.image_file"/>
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock content %}
+

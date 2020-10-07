@@ -72,5 +72,13 @@ Fixed a few things that should have been caught in v0.04, but I needed to push w
 1. Set up LoginManager for user session management
 1. Changed mymethods.py back to models.py, still learning!
 
-
+# v0.06 updates:
+1. Added admin/account route, @login_required for pages that needed it
+1. Updated html pages to only show admin sidebar when logged in
+1. Added super-user field to Admin table
+1. Created check_user() method to check UNIQUE DB entries prior to writing (won't allow you to select an already utilized username/email/phone number)
+1. Huge struggle with ORM DB stuff.  UPDATES were attempting to update the current user, not the user selected, which took a solid day to discover and about ten minutes to fix.
+1. Add/Remove is_su priveleges was a pain. WTForms doesn't let you check/uncheck a form checkbox on the fly, so there was a bit of code-around going on there...
+1. Admin/account/<username> page complete with is_su (sudo, basically) privileges.
+1. Updated save_picture() to remove the old picture as long as it's not default.png...
 

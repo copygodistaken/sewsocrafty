@@ -5,10 +5,11 @@
         <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item" href="{{ url_for('main.home') }}">
-              <img src="{{ url_for('static', filename='images/illustrations/icons/needle.svg') }}" alt="" width="75" height="40">
+              <img alt="Needle Icon" class="lazy filter-secondary" width="75" height="40"
+                         data-src="{{ url_for('static', filename='images/illustrations/icons/tape_measure.svg') }}">
             </a>
-            {# if admin is logged in, show the admin menu #}
             <!-- Burger icon to open left sidebar -->
+              {% if current_user.is_authenticated: %}
             <a class="navbar-item is-hidden-desktop is-hidden-tablet">
               <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
                 <svg width="1000px" height="1000px">
@@ -25,10 +26,12 @@
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
+            {% endif %}
           </div>
           <div id="navbar-menu" class="navbar-menu is-static">
             <!-- Desktop Burger image to open left sidebar -->
             <div class="navbar-start">
+              {% if current_user.is_authenticated: %}
               <a class="navbar-item is-hidden-mobile">
                 <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
                   <svg width="1000px" height="1000px">
@@ -39,10 +42,9 @@
                   <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
                 </div>
               </a>
+              {% endif %}
             </div>
-            {# endif #}
 
-            {# set to be overridden with links for the admin page #}
             {# block navbar #}
             <div class="navbar-end is-secondary">
               <a href="{{ url_for('main.about') }}" class="navbar-item is-secondary">

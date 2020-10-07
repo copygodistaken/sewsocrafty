@@ -133,3 +133,5 @@ dmypy.json
 todo_before_commit.txt
 notes.txt
 site.db
+*.vqe
+

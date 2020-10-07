@@ -1,10 +1,11 @@
 from flask import Flask, render_template_string # ButtonWidget
 from flask_wtf import FlaskForm, Form # ButtonWidget
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import Form, StringField, PasswordField, SubmitField, BooleanField
+from flask_login import current_user
+from wtforms import Form, StringField, PasswordField, SubmitField, BooleanField, HiddenField, SelectField
 from wtforms.validators import InputRequired, Length, Email, EqualTo, ValidationError
 from wtforms.widgets import html_params, HTMLString # ButtonWidget
-from sewsocrafty.models import Admin
+from .models import Admin
 # from flask_login import current_user
 
 
@@ -45,18 +46,64 @@ class RegistrationForm(FlaskForm):
     phone_num = StringField('Phone Number', validators=[InputRequired(),
                              Length(min=10, max=14)])
     image_file = FileField('Image', validators=[FileAllowed(['jpg', 'png', 'gif'])])
+    is_su = BooleanField('Ability to add and remove other Admins?')
     submit = MyButtonField('Create Admin')
 
     def validate_username(self, username):
         # check submitted username against the usernames in the database
-        admin = Admin.query.filter_by(username=username.data).first
-        if admin:
-            raise ValidationError('That username is taken! Please choose a different one!')
+        if username.data != current_user.username:
+            admin = Admin.query.filter_by(username=username.data).first()
+            if admin:
+                raise ValidationError('{admin.username} is taken! Please choose a different user name!')
 
     def validate_email(self, email):
         # check submitted username against the emails in the database
-        admin = Admin.query.filter_by(email=email.data).first
+        if email.data != current_user.email:
+            admin = Admin.query.filter_by(email=email.data).first()
+            if admin:
+                raise ValidationError(admin.email + ' is taken! Please choose a different email!')
+
+    def validate_phone_num(self, phone_num):
+        # ensure two people aren't using the same phone number
+        admin = Admin.query.filter_by(phone_num=phone_num.data).first()
         if admin:
-            raise ValidationError('That email is taken! Please choose a different one!')
+            raise ValidationError(admin.phone_num + ' is taken! Please choose a different phone number!')
+
+class UpdateAdminForm(FlaskForm):
+    admin_id = HiddenField('admin_id')
+    username = StringField('Username', validators=[InputRequired(),
+                            Length(min=2, max=20)])
+    first_name = StringField('First Name', validators=[InputRequired(),
+                            Length(min=2, max=30)])
+    last_name = StringField('Last Name', validators=[InputRequired(),
+                            Length(min=2, max=30)])
+    email = StringField('Email', validators=[InputRequired(), Email()])
+    phone_num = StringField('Phone Number', validators=[InputRequired(),
+                             Length(min=10, max=14)])
+    image_file = FileField('Image', validators=[FileAllowed(['jpg', 'png', 'gif'])])
+    is_su_checked = BooleanField('Ability to add and remove Admins?', default='checked')
+    is_su_unchecked = BooleanField('Ability to add and remove Admins?')
+    #is_su = SelectField('Ability to add and remove Admins?', choices=[(True, 'Yes'), (False, 'No')])
+    ## passwords handled by ResetPasswordForm() to ensure SUs don't change
+    ## user passwords without the users (must be mailed to email address)
+    submit = MyButtonField('Update Admin')
+
+
+    ##### Validations MUST occur in the python routes due to the requirement
+    ##### to check against the database to ensure the allowance of "duplicate"
+    ##### usernames/emails as long as the admin_id remains the same...
+    #def validate_username(self, username, admin_id):
+    #    admin_list = Admin.query.order_by(Admin.id)
+    #    for admin in admin_list:
+    #        print(admin.username, " - ", current_user.username, " - ", current_user.is_su)
+    #        if admin.username == username & admin.id != admin_id:
+    #            raise ValidationError('That username is taken! Please choose a different one!')
+
+    # def validate_email(self, email):
+    #     if email.data != current_user.email:
+    #         # check submitted email against the emails in the database
+    #         admin = Admin.query.filter_by(email=email.data).first()
+    #         if admin:
+    #             raise ValidationError('That email is taken! Please choose a different one!')
 
 

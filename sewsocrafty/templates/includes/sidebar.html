@@ -23,12 +23,13 @@
           </li>
           <li class="have-children"><a href="#"><span class="fa fa-users"></span>Admin</a>
             <ul>
-              <li><a href="{# url_for('admin/add_user') #}">Add an Admin</a></li>
-              <li><a href="{# url_for('admin/edit_user/username') #}">Edit Current Admin</a></li>
+              <li><a href="{{ url_for('admin.register') }}">Add an Admin</a></li>
+              <li><a href="{{ url_for('admin.account', username=username) }}">Edit Current Admin</a></li>
               {# should this be a super-admin? #}
               <li><a href="{# url_for('admin/delete_user') #}">Delete an Admin</a></li>
             </ul>
           </li>
+          <li><a href="{{ url_for('admin.logout') }}">Log Out</a></li>
         </ul>
       </div>
     </div>

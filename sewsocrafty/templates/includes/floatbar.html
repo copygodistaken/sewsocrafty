@@ -5,8 +5,11 @@
         <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item" href="{{ url_for('main.home') }}">
-              <img src="{{ url_for('static', filename='images/illustrations/icons/needle.svg') }}" alt="" width="75" height="40">
+              <img alt="Needle Icon" class="lazy filter-secondary" width="75" height="40"
+                         data-src="{{ url_for('static', filename='images/illustrations/icons/tape_measure.svg') }}">
             </a>
+            <!-- Burger icon to open left sidebar -->
+              {% if current_user.is_authenticated: %}
             <a class="navbar-item is-hidden-desktop is-hidden-tablet">
               <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
                 <svg width="1000px" height="1000px">
@@ -17,25 +20,31 @@
                 <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
               </div>
             </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+            <!-- Burger image to open left sidebar -->
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
+            {% endif %}
           </div>
-          <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+          <div id="navbar-menu" class="navbar-menu is-static">
+            <!-- Desktop Burger image to open left sidebar -->
             <div class="navbar-start">
+              {% if current_user.is_authenticated: %}
               <a class="navbar-item is-hidden-mobile">
-                <div id="cloned-menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+                <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
                   <svg width="1000px" height="1000px">
                     <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
                     <path class="path2" d="M 300 500 L 700 500"></path>
                     <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
                   </svg>
-                  <button id="cloned-menu-icon-trigger" class="menu-icon-trigger"></button>
+                  <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
                 </div>
               </a>
+              {% endif %}
             </div>
+
             {# block navbar_float #}
             <div class="navbar-end is-secondary">
               <a href="{{ url_for('main.about') }}" class="navbar-item is-secondary">

@@ -16,12 +16,23 @@ def load_user(admin_id):
 class Admin(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
-    password = db.Column(db.String(60)) ## must be nullable to allow email token for initial password
+    ### must be nullable to allow email token for initial password
+    # >>> import secrets
+    # >>> hex = secrets.token_hex(16)
+    # >>> print(hex)
+    # >>> bcrypt.generate_password_hash(hex).decode('utf-8')
+    # '$2b$12$rb17B1M3yALIBqhRL9sId.wfvBVJHxgTM8B46rBNFo9sP0Bv53vvK'
+    # good luck.
+
+    password = db.Column(db.String(60), nullable=False,
+                         default='$2b$12$rb17B1M3yALIBqhRL9sId.wfvBVJHxgTM8B46rBNFo9sP0Bv53vvK')
     first_name = db.Column(db.String(25), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone_num = db.Column(db.String(10), unique=True, nullable=False)
-    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    image_file = db.Column(db.String(15), nullable=False, default='default.jpg')
+    ## is_su should allow the use of current_user.is_su to yield True/False
+    is_su = db.Column(db.Boolean(), nullable=False, default=False)
 
     # places that link to the admin table using admin.id
     # products = db.relationship('Products', backref='author', lazy=True)

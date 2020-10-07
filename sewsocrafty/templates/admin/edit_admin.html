@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+{% block title %}<title>{{ title }}</title>{% endblock title %}
+{% block content %}
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-7 landing-caption">
+              <h1 class="title is-1 is-bold is-spaced">
+                {{ title }}
+              </h1>
+              <div class="divider"></div>
+              <div class="is-muted">
+                <!-- add enctype to allow media -->
+                <form method="POST" action="" enctype="multipart/form-data">
+                  {{ form.hidden_tag() }}
+                  <fieldset>
+                    <legend class="is-secondary">{{ admin.username }}</legend>
+
+                    {{ form.admin_id(value="{}").format(admin.id) }}
+
+                    <div class="field" padding=20px>
+                      {{ form.username.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.username(class="input is-medium is-secondary-focus", value="{}").format(admin.username) }}
+                        <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
+                      </div>
+                      {% if form.username.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.username.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
+                    </div>
+
+                    <div class="field" padding=20px>
+                      {{ form.first_name.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.first_name(class="input is-medium is-secondary-focus", value="{}").format(admin.first_name) }}
+                        <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
+                      </div>
+                      {% if form.first_name.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.first_name.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
+                    </div>
+
+                    <div class="field" padding=20px>
+                      {{ form.last_name.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.last_name(class="input is-medium is-secondary-focus", value="{}").format(admin.last_name) }}
+                        <span class="icon is-medium is-left"><i class="fa fa-user"></i></span>
+                      </div>
+                      {% if form.last_name.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.last_name.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
+                    </div>
+
+                    <div class="field" padding=20px>
+                      {{ form.phone_num.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.phone_num(class="input is-medium is-secondary-focus", value="{}").format(admin.phone_num) }}
+                        <span class="icon is-medium is-left"><i class="fa fa-phone"></i></span>
+                      </div>
+                      {% if form.phone_num.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.phone_num.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
+                    </div>
+
+                    <div class="field" padding=20px>
+                      {{ form.email.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {{ form.email(class="input is-medium is-secondary-focus", value="{}").format(admin.email) }}
+                        <span class="icon is-medium is-left"><i class="fa fa-envelope"></i></span>
+                      </div>
+                      {% if form.email.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.email.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
+                    </div>
+
+                    <div class="field">
+                      {{ form.image_file.label(class="label") }}
+                      <div class="file is-info is-boxed">
+                        <label class="file-label">
+                          {# can't use this as it adds the /label tag prematurely #}
+                          {# form.image_file.label(class="file-label") #}
+                          {{ form.image_file(class="file-input", type="file") }}
+                          (Current image is located to the right.)
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fa fa-file-picture-o"></i>
+                            </span>
+                            <span class="file-label">Choose a User Image
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                      {% if form.image_file.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.image_file.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
+                    </div>
+
+                    {% if current_user.is_su %}
+                    <div class="field" padding=20px>
+                      {{ form.is_su_checked.label(class="label") }}
+                      <div class="control has-icons-left">
+                        {% if admin.is_su %}
+                          {{ form.is_su_checked(class="checkbox") }} (I'm checked to allow)<br>
+                          Currently {{ admin.first_name + " " + admin.last_name }} <strong>has</strong>
+                        {% else %}
+                          {{ form.is_su_unchecked(class="checkbox") }} (check here to allow)<br>
+                          Currently {{ admin.first_name + " " + admin.last_name }} <strong>does not have</strong>
+                        {% endif %}this privilege.
+                      </div>
+                      {% if form.is_su_checked.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.is_su_checked.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
+                      {% if form.is_su_unchecked.errors %}
+                      <article class="message is-danger">
+                        {% for error in form.is_su_unchecked.errors %}
+                          <div class="message-body">{{ error }}</div>
+                        {% endfor %}
+                      </article>
+                      {% endif %}
+                    </div>
+                    {% endif %}
+                  <div class="control">
+                    {{ form.submit(href=url_for('admin.account', username=admin.username)) }}
+                  </div>
+                  </fieldset>
+                </form>
+              </div>
+              <span class="icon"><i class="fa5x fa-lock-o"></i></span>
+            </div>
+           <div class="column is-4 is-offset-1">
+              <figure class="admin_user">
+                <blockquote>
+                  <p>Select An Admin:</p><br>
+                  {% for user in admin_list %}
+                    <a href="{{ url_for('admin.account', username=user.username) }}">
+                    <input  class="button is-fullwidth rounded secondary-btn"
+                            value="{{ user.last_name + ', ' + user.first_name }}"></a>
+                    <br>
+                  {% endfor %}
+              {# add something here to list our admins with clickable links that #}
+              {# return to admin/account/username #}
+                </blockquote>
+                <div class="author">
+                  <img class="lazy filter-primary" data-src="{{ url_for('static', filename='images/admins/users.svg') }}" alt="admin.image_file"/>
+                </div>
+              </figure>
+              <figure class="image is-4by4">
+                <img  class="lazy"
+                      src="{{ url_for('static', filename='images/admins/' + admin.image_file) }}"
+                      alt="{{ admin.image_file }}">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-foot mb-20">
+        <div class="container">
+          <div class="tabs is-centered">
+            {# something to display user is in admin section #}
+            ADMIN - ADMIN - ADMIN - ADMIN - ADMIN - ADMIN - ADMIN - ADMIN
+          </div>
+        </div>
+      </div>
+{% endblock content %}
